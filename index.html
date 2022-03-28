@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        canvas{
+            background-color: #fec1fe;
+        }
+    </style>
+</head>
+<body>
+    <canvas width="500" height="500"></canvas>
+
+    <script>
+        let down = 40; let up = 38; let right = 39; let left= 37;
+        let cnv = document.querySelector('canvas');
+        let ctx = cnv.getContext('2d')
+
+        let obj = {
+            x:10,
+            y:15
+        }
+
+        render();
+
+        window.addEventListener('keydown', keydownHandler);
+
+        function keydownHandler(e){
+            let key = e.keyCode;
+
+            if(key === left){
+                obj.x--;
+            }
+            if(key === right){
+                obj.x++;
+            }
+            if(key === up){
+                obj.y--
+            }
+            if(key === down){
+                obj.y++    
+            }
+
+            render();
+        }
+
+        function render(){
+            ctx.clearRect(0,0, cnv.width, cnv.height)
+            ctx.fillRect(obj.x, obj.y, 50,30)
+        }
+    </script>
+</body>
+</html>
